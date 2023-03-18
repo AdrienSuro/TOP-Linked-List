@@ -36,6 +36,10 @@ class LanguageList {
     head() {
       return this.head;
     }
+
+    tail() {
+        return this.tail;
+    }
   
     at(index) {
       let current = this.head
@@ -49,6 +53,30 @@ class LanguageList {
         }
       } 
     }
+
+    pop() {
+        let current = this.head;
+        const thisCopy = this;
+        function searchEmptyNode(node) {
+            if (node.nextNode == null) {
+                thisCopy.head = null;
+                thisCopy.tail = null;
+                thisCopy.length--
+                return
+            }
+            if (node.nextNode.nextNode == null) {
+                node.nextNode = null;
+                thisCopy.tail = node;
+                thisCopy.length--
+                return
+            }
+            if (node.nextNode != null) {
+                let next = node.nextNode;
+                searchEmptyNode(next)
+            }
+        }
+        searchEmptyNode(current)
+    }    
   
     toString() {
       let wholeString = "";
@@ -75,17 +103,20 @@ class LanguageList {
   let user = new LanguageList("My language list");
   
   user.append("HTML")
-  console.info(user)
+
   user.prepend("CSS")
-  console.info(user)
+
   user.prepend("Javascript")
-  console.info(user)
-  console.log(user.size());
-  console.log(user.at(1))
-  console.log(user.toString())
+
   user.append("React");
-  console.log(user.toString())
-  console.log(user.head)
+
   user.prepend("TypeScript")
-  console.log(user.head)
+
+  console.log(user.toString())
+
+  user.pop()
+
+  console.log(user.toString())
+  console.log(user)
+
   
