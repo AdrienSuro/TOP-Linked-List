@@ -30,7 +30,11 @@ class LanguageList {
     }
   
     size() {
-      return this.length
+      return this.length;
+    }
+
+    head() {
+      return this.head;
     }
   
     at(index) {
@@ -81,4 +85,7 @@ class LanguageList {
   console.log(user.toString())
   user.append("React");
   console.log(user.toString())
+  console.log(user.head)
+  user.prepend("TypeScript")
+  console.log(user.head)
   
