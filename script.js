@@ -92,6 +92,21 @@ class LanguageList {
             }
         }
     }
+
+    find(value) {
+        let current = this.head;
+        for (let i=1; i<=this.length; i++) {
+            if (current.value == value) {
+                return i
+            }
+            else if (current.nextNode == null) {
+                return null
+            }
+            else {
+                current = current.nextNode;
+            }
+        }
+    }
   
     toString() {
       let wholeString = "";
@@ -130,7 +145,8 @@ class LanguageList {
   console.log(user.contains("TypeScript"))
   console.log(user.contains("Macumlba"))
   console.log(user.contains("React"))
-
+  console.log(user.find("Javascript"))
+  console.log(user.toString())
 
 
   
